@@ -1,46 +1,47 @@
 #include <stdio.h>
-void Merge(int A[], int p, int q, int r)
+void merge(int arr[], int l, int m, int r)
 {
-  int n1 = q - p + 1;
-  int n2 = r - q;
-  int L[10], R[10];
+  // Your code here
+  int n1 = m - l + 1;
+  int n2 = r - m;
+  int L[n1], R[n2];
   int i, j, k;
   for (i = 0; i < n1; i++)
   {
-    L[i] = A[p + i];
+    L[i] = arr[l + i];
   }
   for (j = 0; j < n2; j++)
   {
-    R[j] = A[q + j + 1];
+    R[j] = arr[m + 1 + j];
   }
-  L[i] = 9999;
-  R[j] = 9999;
+  L[i] = 99999;
+  R[j] = 99999;
   i = 0;
   j = 0;
-  for (k = p; k < r; k++)
+  for (k = l; k <= r; k++)
   {
-
-    if (L[i] < R[j])
+    if (L[i] <= R[j])
     {
-      A[k] = L[i];
+      arr[k] = L[i];
       i++;
     }
     else
     {
-      A[k] = L[j];
+      arr[k] = R[j];
       j++;
     }
   }
 }
-void Merge_sort(int A[], int p, int r)
+void mergeSort(int arr[], int l, int r)
 {
-  int q;
-  if (p < r)
+  // code here
+  int m;
+  if (l < r)
   {
-    q = (p + r) / 2;
-    Merge_sort(A, p, q);
-    Merge_sort(A, q + 1, r);
-    Merge(A, p, q, r);
+    m = (l + r) / 2;
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    merge(arr, l, m, r);
   }
 }
 int main()
@@ -54,8 +55,8 @@ int main()
   {
     scanf("%d", &A[i]);
   }
-  int p = 0, r = n - 1;
-  Merge_sort(A, p, r);
+  int l = 0, r = n - 1;
+  mergeSort(A, l, r);
   for (i = 0; i < n; i++)
   {
     printf("%d", A[i]);
