@@ -14,6 +14,13 @@ void linkedListTraversal(struct Node *head)
         ptr = ptr->next;
     } while (ptr != head);
 }
+// void ll(struct Node *head){
+//     struct Node *ptr=head;
+//     do{
+//         printf("Element is %d \n",ptr->data);
+//         ptr=ptr->next;
+//     }while(ptr!=head);
+// }
 
 int main()
 {
