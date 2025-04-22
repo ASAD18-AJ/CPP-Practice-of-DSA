@@ -1,1 +1,3 @@
- // int p = 0, r = n - 1;
+for(int j=n;j>=i;j--) {
+            cout << " ";
+        }

@@ -241,36 +241,77 @@ using namespace std;
 //         c)stars(1 to i)
 
 
-int main() {
-    int n=4;
+// int main() {
+//     int n=4;
 
-    //upper half
+//     //upper half
 
-    for(int i=1;i<=n;i++) {
-        for(int j=1;j<=i;j++) {
-            cout << "*";
-        }
-        for(int j=1;j<=2*(n-i);j++) {
-            cout << " ";
-        }
-        for(int j=1;j<=i;j++) {
-            cout << "*";
-        }
-        cout << endl;
-    }
+//     for(int i=1;i<=n;i++) {
+//         for(int j=1;j<=i;j++) {
+//             cout << "*";
+//         }
+//         for(int j=1;j<=2*(n-i);j++) {
+//             cout << " ";
+//         }
+//         for(int j=1;j<=i;j++) {
+//             cout << "*";
+//         }
+//         cout << endl;
+//     }
     
-    for(int i=n;i>=1;i--) {
-        for(int j=1;j<=i;j++) {
-            cout << "*";
-        }
-        for(int j=1;j<=2*(n-i);j++) {
+//     for(int i=n;i>=1;i--) {
+//         for(int j=1;j<=i;j++) {
+//             cout << "*";
+//         }
+//         for(int j=1;j<=2*(n-i);j++) {
+//             cout << " ";
+//         }
+//         for(int j=1;j<=i;j++) {
+//             cout << "*";
+//         }
+//         cout << endl;
+//     }
+
+//     return 0;
+// }
+
+
+
+// assignment questions
+
+// 1) print the 0-1 triangle pattern
+// int main() {
+//     int n=5;
+//     bool val=true;
+
+//     for(int i=0;i<=n;i++) {
+//         for(int j=0;j<=i;j++) {
+//             cout<<val<<" ";
+//             val=!val;
+//         }
+//         cout<<endl;
+//     }
+// }
+
+
+// 4 spaces 5stars
+// 3 spaces 5stars
+// 2 spaces 5stars
+// 1 spaces 5stars
+// 0 spaces 5stars
+
+int main() {
+    int n=5;
+    for(int i=1;i<=n;i++){
+        for(int j=n;j>=i;j--) {
             cout << " ";
         }
-        for(int j=1;j<=i;j++) {
-            cout << "*";
+        // for(int j=1;j<=n-i;j++) {
+        //     cout << " ";
+        // }
+        for(int j=1;j<=n;j++) {
+            cout << "* ";
         }
         cout << endl;
     }
-
-    return 0;
 }
