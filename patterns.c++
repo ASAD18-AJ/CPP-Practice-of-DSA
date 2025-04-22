@@ -224,3 +224,53 @@ using namespace std;
 // }
 
 
+// print Butterfly pattern
+
+// (1) outer loop -> rows
+// (1 to n)
+// (2) inner loop -> columns/ each rows
+//     a)stars(1 to i)
+//     b)spaces(1 to 2*(n-i))
+//     c)stars(1 to i)
+// lower half
+    // (3) outer loop -> rows
+//     (n to 1)
+//     (4) inner loop -> columns/ each rows
+//         a)stars(1 to i)
+//         b)spaces(1 to 2*(n-i))
+//         c)stars(1 to i)
+
+
+int main() {
+    int n=4;
+
+    //upper half
+
+    for(int i=1;i<=n;i++) {
+        for(int j=1;j<=i;j++) {
+            cout << "*";
+        }
+        for(int j=1;j<=2*(n-i);j++) {
+            cout << " ";
+        }
+        for(int j=1;j<=i;j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+    
+    for(int i=n;i>=1;i--) {
+        for(int j=1;j<=i;j++) {
+            cout << "*";
+        }
+        for(int j=1;j<=2*(n-i);j++) {
+            cout << " ";
+        }
+        for(int j=1;j<=i;j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
