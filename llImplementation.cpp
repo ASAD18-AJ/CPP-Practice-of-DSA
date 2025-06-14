@@ -49,6 +49,22 @@ public:
         }
         cout<< "NULL" << endl;
     }
+
+    void insert(int val, int pos) {
+        Node* newNode = new Node(val);
+
+        Node* temp = head;
+        for(int i=0; i<pos-1; i++) {
+            if(temp == NULL) {
+                cout << "position is INVALID" << endl;
+                return;
+            }
+            temp = temp->next;
+        }
+
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
 };
 
 int main() {
@@ -56,6 +72,9 @@ int main() {
     ll.push_back(3);
     ll.push_back(4);
     ll.push_back(5);
+    ll.printList();
+
+    ll.insert(100, 2);
     ll.printList();
     return 0;
 }
