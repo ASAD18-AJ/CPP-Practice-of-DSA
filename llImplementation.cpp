@@ -10,6 +10,12 @@ public:
         data = val;
         next = NULL;
     }
+    ~Node() {
+        if(next != NULL) {
+            delete next;
+            next = NULL;
+        }
+    }
 };
 
 class List {
@@ -20,6 +26,13 @@ public:
     List() {
         head = NULL;
         tail = NULL;
+    }
+    ~List() {
+        cout << "Destructor called" << endl;
+        if(head != NULL) {
+            delete head;
+            head = NULL;
+        }
     }
     void push_front(int val) {
         Node* newNode = new Node(val);
