@@ -89,16 +89,47 @@ public:
         temp->next = NULL;
         delete temp;
     }
+
+    void pop_back() {
+        Node* temp = head;
+
+        while(temp->next->next != NULL) {
+            temp = temp->next;
+        }
+
+        temp->next = NULL;
+        tail = temp;
+    }
+
+    int searchItr(int key) {
+        Node* temp = head;
+        int idx = 0;
+
+        while(temp != NULL) {
+            if(temp->data == key) {
+                return idx;
+            }
+            temp = temp->next;
+            idx++;
+        }
+        return -1;
+    }
 };
 
 int main() {
     List ll;
+    ll.push_front(1);
+    ll.push_front(2);
     ll.push_back(3);
     ll.push_back(4);
     ll.push_back(5);
     ll.printList();
 
     ll.insert(100, 2);
+
+    ll.pop_back();
     ll.printList();
+
+    cout << searchItr(2) << endl;
     return 0;
 }
