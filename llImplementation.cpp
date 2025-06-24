@@ -130,6 +130,6 @@ int main() {
     ll.pop_back();
     ll.printList();
 
-    cout << searchItr(2) << endl;
+    cout << ll.searchItr(2) << endl;
     return 0;
 }
