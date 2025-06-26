@@ -114,6 +114,27 @@ public:
         }
         return -1;
     }
+
+    int helper(Node* head, int key) {
+        if(temp == NULL) {
+            return -1;
+        }
+
+        if(head->data == key) {
+            return 0;
+        }
+
+        int idx = helper(head->next, key);
+        if(idx == -1) {
+            return -1;
+        }
+        return idx + 1;
+        
+    }
+
+    int searchRec(int key) {
+        return helper(head, key);
+    }
 };
 
 int main() {
