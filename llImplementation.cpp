@@ -165,6 +165,9 @@ int main() {
     ll.pop_back();
     ll.printList();
 
+    ll.reverse();
+    ll.printList();
+
     cout << ll.searchItr(2) << endl;
     return 0;
 }
