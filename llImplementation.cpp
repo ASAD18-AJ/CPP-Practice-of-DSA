@@ -135,6 +135,20 @@ public:
     int searchRec(int key) {
         return helper(head, key);
     }
+
+    void reverse(){
+        Node* curr = head;
+        Node* prev = NULL;
+
+        while(curr != NULL) {
+            Node* next = curr->next;
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
 };
 
 int main() {
