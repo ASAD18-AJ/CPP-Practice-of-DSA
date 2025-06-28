@@ -116,6 +116,7 @@ public:
     }
 
     int helper(Node* head, int key) {
+        Node* temp = head;
         if(temp == NULL) {
             return -1;
         }
@@ -149,6 +150,29 @@ public:
         }
         head = prev;
     }
+
+    int getSize() {
+        int sz = 0;
+        Node* temp = head;
+        while(temp != NULL){
+            temp = temp->next;
+            sz++;
+        }
+        return sz;
+    }
+
+    void removeNth(int n) {
+        int size = getSize();
+        Node* prev = head;
+
+        for(int i=1;i<(size-n);i++) {
+            prev = prev->next;
+        }
+        
+        Node* toDel = prev->next;
+        cout << "going to delete: " << toDel->data << endl;
+        prev->next = prev->next->next;
+    }
 };
 
 int main() {
@@ -160,14 +184,17 @@ int main() {
     ll.push_back(5);
     ll.printList();
 
-    ll.insert(100, 2);
+    // ll.insert(100, 2);
 
-    ll.pop_back();
-    ll.printList();
+    // ll.pop_back();
+    // ll.printList();
 
     ll.reverse();
+    // ll.printList();
+
+    ll.removeNth(2);
     ll.printList();
 
-    cout << ll.searchItr(2) << endl;
+    // cout << ll.searchItr(2) << endl;
     return 0;
 }
