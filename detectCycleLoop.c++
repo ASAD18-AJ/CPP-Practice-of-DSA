@@ -110,6 +110,61 @@ void removeCycle(Node* head) {
     }
 }
 
+Node* splitAtMid(Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+    Node* prev = NULL;
+
+    while(fast != NULL & fast->next != NULL) {
+        prev = slow;
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    if(prev != NULL) {
+        prev->next = NULL;
+    }
+    return slow;
+}
+
+Node* merge(Node* left, Node* right) {
+    List ans;
+    Node* i = left;
+    Node* j = right;
+
+    while(i != NULL && j != NULL) {
+        if(i->data <= j->data) {
+            ans.push_back(i->data);
+            i = i->next;
+        } else {
+            ans.push_back(j->data);
+            j = j->next;
+        }
+    }
+    while(i != NULL) {
+        ans.push_back(i->data);
+        i = i->next;
+    }
+    while(j != NULL) {
+        ans.push_back(j->data);
+        j = j->next;
+    }
+    return ans;
+}
+
+void mergeSort(Node* head) {
+    if(head == NULL || head->next == NULL) {
+        return;
+    }
+
+    Node* rightHead = splitAtMid(head);
+
+    Node* left = mergeSort(head);
+    Node* right = mergeSort(rightHead);
+
+    return merge(left, rightHead);
+}
+
 
 int main() {
     List ll;
