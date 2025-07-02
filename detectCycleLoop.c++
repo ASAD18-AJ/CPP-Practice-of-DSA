@@ -32,6 +32,17 @@ public:
             head = newNode;
         }
     }
+
+    void push_back(int val) {
+        Node* newNode = new Node(val);
+
+        if(head == NULL) {
+            head = tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
     void pop_front() {
     if(head == NULL) {
         return;
@@ -149,12 +160,12 @@ Node* merge(Node* left, Node* right) {
         ans.push_back(j->data);
         j = j->next;
     }
-    return ans;
+    return ans.head;
 }
 
-void mergeSort(Node* head) {
+Node* mergeSort(Node* head) {
     if(head == NULL || head->next == NULL) {
-        return;
+        return head;
     }
 
     Node* rightHead = splitAtMid(head);
@@ -162,7 +173,7 @@ void mergeSort(Node* head) {
     Node* left = mergeSort(head);
     Node* right = mergeSort(rightHead);
 
-    return merge(left, rightHead);
+    return merge(left, right);
 }
 
 
@@ -172,10 +183,12 @@ int main() {
     ll.push_front(3);
     ll.push_front(2);
     ll.push_front(1);
+    // printList(ll.head);
 
-    ll.tail->next = ll.head;
+    // ll.tail->next = ll.head;
 
     // isCycle(ll.head);
-    removeCycle(ll.head);
+    // removeCycle(ll.head);
+    ll.head = mergeSort(ll.head);
     printList(ll.head);
 }
