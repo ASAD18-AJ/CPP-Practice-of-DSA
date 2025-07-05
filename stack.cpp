@@ -2,8 +2,9 @@
 #include<vector>
 using namespace std;
 
+template<class T>
 class Stack {
-    vector<int> vec;
+    vector<T> vec;
 public: 
     void push(int val) {
         vec.push_back(val);
@@ -32,7 +33,7 @@ public:
 };
 
 int main() {
-    Stack s;
+    Stack<int> s;
 
     s.push(3);
     s.push(2);
