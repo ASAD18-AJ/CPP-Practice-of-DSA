@@ -21,7 +21,7 @@ public:
         head = tail = NULL;
     }
 
-    void push() {
+    void push(int data) {
         Node* newNode = new Node(data);
         if(head == NULL) {
             head = tail = newNode;
@@ -40,7 +40,7 @@ public:
         delete temp;
     }
 
-    void front() {
+    int front() {
         return head->data;
     }
 
