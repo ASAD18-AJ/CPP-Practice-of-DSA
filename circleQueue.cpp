@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class Queue{
@@ -62,5 +63,16 @@ int main() {
     cout<< q.front() << endl;
     q.pop();
     cout<< q.front() << endl;
+
+    queue<int> Q;
+
+    Q.push(1);
+    Q.push(2);
+    Q.push(3);
+
+    while(!Q.empty()) {
+        cout << Q.front() << endl;
+        Q.pop();
+    }
     return 0;
 }
