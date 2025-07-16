@@ -1,7 +1,12 @@
 #include<iostream>
 #include<vector>
-#include<pair>
 using namespace std;
+
+
+
+bool compare(pair<int,int> p1, pair<int, int> p2) {
+    return p1.second < p2.second;
+}
 
 int main(){
     vector<int> start = {0,1,2};
@@ -14,6 +19,12 @@ int main(){
 
     for(int i=0;i<activity.size();i++) {
         cout << activity[i].first << " , " << activity[i].second << endl;
+    }
+
+    sort(activity.begin(), activity.end(), compare);
+
+    for(int i=0;i<activity.size();i++){
+        cout<<"A" << i << " : "<< activity[i].first << "," << activity[i].second << endl;
     }
 
     return 0;
