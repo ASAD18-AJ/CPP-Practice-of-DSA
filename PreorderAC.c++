@@ -55,13 +55,31 @@ void inorder(Node* root) {
     inorder(root->right);
 }
 
+void postorder(Node* root) {
+    if(root == NULL) {
+        return ;
+    }
+
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
+}
+
+
+
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
     Node* root = buildTree(nodes);
 
     // cout << "root = "<< root->data << endl;
 
-    preorder(root);
+    // preorder(root);
+    // cout << endl;
+
+    // inorder(root);
+    // cout << endl;
+
+    postorder(root);
     cout << endl;
 
     return 0;
