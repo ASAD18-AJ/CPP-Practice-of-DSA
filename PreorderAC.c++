@@ -65,7 +65,18 @@ void postorder(Node* root) {
     cout << root->data << " ";
 }
 
+//height of the tree
+int height(Node* root) {
+    if(root == NULL) {
+        return 0;
+    }
 
+    int leftHeight = height(root->left);
+    int rightHeight = height(root->right);
+
+    int currHt = max(leftHeight, rightHeight) + 1;
+    return currHt;
+}
 
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
@@ -79,8 +90,10 @@ int main() {
     // inorder(root);
     // cout << endl;
 
-    postorder(root);
-    cout << endl;
+    // postorder(root);
+    // cout << endl;
+
+    cout << "Height : " << height(root) << endl;
 
     return 0;
 
