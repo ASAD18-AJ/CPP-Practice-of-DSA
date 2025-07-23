@@ -78,6 +78,8 @@ int height(Node* root) {
     return currHt;
 }
 
+//count of nodes in the tree
+
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
     Node* root = buildTree(nodes);
