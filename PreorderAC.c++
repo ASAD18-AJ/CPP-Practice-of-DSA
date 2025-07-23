@@ -79,6 +79,16 @@ int height(Node* root) {
 }
 
 //count of nodes in the tree
+int count(Node* root) {
+    if(root == NULL) {
+        return 0;
+    }
+
+    int leftCount = count(root->left);
+    int rightCount = count(root->right);
+
+    return leftCount + rightCount + 1;
+}
 
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
@@ -95,7 +105,8 @@ int main() {
     // postorder(root);
     // cout << endl;
 
-    cout << "Height : " << height(root) << endl;
+    // cout << "Height : " << height(root) << endl;
+    cout << "Count : " << count(root) << endl;
 
     return 0;
 
