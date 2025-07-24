@@ -90,6 +90,21 @@ int count(Node* root) {
     return leftCount + rightCount + 1;
 }
 
+//sum of all nodes in the tree
+int sum(Node* root) {
+    if(root == NULL) {
+        return 0;
+    }
+
+    int leftSum = sum(root->left);
+    int rightSum = sum(root->right);
+
+    int currSum = leftSum + rightSum + root->data;
+    cout << "sum = " << currSum << endl;
+
+    return currSum;
+}
+
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
     Node* root = buildTree(nodes);
@@ -106,7 +121,9 @@ int main() {
     // cout << endl;
 
     // cout << "Height : " << height(root) << endl;
-    cout << "Count : " << count(root) << endl;
+    // cout << "Count : " << count(root) << endl;
+
+    cout << "sum of nodes : " << sum(root) << endl;
 
     return 0;
 
