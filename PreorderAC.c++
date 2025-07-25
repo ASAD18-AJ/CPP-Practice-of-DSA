@@ -105,6 +105,19 @@ int sum(Node* root) {
     return currSum;
 }
 
+int diam1(Node* root) { //Time complexity - O(n^2)
+    if(root == NULL) {
+        return 0;
+    }
+    int currDiam = height(root->left) + height(root->right) + 1;
+    int leftDiam = diam1(root->left);
+    int rightDiam = diam1(root->right);
+
+    return max(currDiam, max(leftDiam, rightDiam));
+}
+
+
+
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
     Node* root = buildTree(nodes);
@@ -123,7 +136,9 @@ int main() {
     // cout << "Height : " << height(root) << endl;
     // cout << "Count : " << count(root) << endl;
 
-    cout << "sum of nodes : " << sum(root) << endl;
+    // cout << "sum of nodes : " << sum(root) << endl;
+
+    cout << "diameter of tree : " << diam1(root) << endl;
 
     return 0;
 
