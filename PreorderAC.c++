@@ -116,6 +116,39 @@ int diam1(Node* root) { //Time complexity - O(n^2)
     return max(currDiam, max(leftDiam, rightDiam));
 }
 
+bool isIdentical(Node* root1, Node* root2) {
+    if(root1 == NULL && root2 == NULL) {
+        return true;
+    } else if(root1 == NULL || root2 == NULL) {
+        return false;
+    }
+
+    if(root1->data != root2->data) {
+        return false;
+    }
+
+    return isIdentical(root1->left, root2->left) && isIdentical(root1->right, root2->right);
+}
+
+
+bool isSubtree(Node* root, Node* subRoot) {
+    if(root == NULL && subRoot == NULL) {
+        return true;
+    } else if(root == NULL || subRoot == NULL) {
+        return false;
+    }
+
+    if(root->data == subRoot -> data) {
+
+    }
+
+    int isLeftSubtree = isSubtree(root->left, subRoot->left);
+
+    if(!isLeftSubtree) {
+        return isSubtree(root->right, subRoot->right);
+    }
+    return true;
+}
 
 
 int main() {
