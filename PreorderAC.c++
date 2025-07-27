@@ -105,6 +105,7 @@ int sum(Node* root) {
     return currSum;
 }
 
+//diameter of the tree
 int diam1(Node* root) { //Time complexity - O(n^2)
     if(root == NULL) {
         return 0;
@@ -115,6 +116,9 @@ int diam1(Node* root) { //Time complexity - O(n^2)
 
     return max(currDiam, max(leftDiam, rightDiam));
 }
+
+
+//subtree check
 
 bool isIdentical(Node* root1, Node* root2) {
     if(root1 == NULL && root2 == NULL) {
@@ -150,6 +154,38 @@ bool isSubtree(Node* root, Node* subRoot) {
     return true;
 }
 
+//Kth level of the tree
+void KthHelper(Node* root, int k, int currLevel) {
+    if(root == NULL) {
+        return ;
+    }
+    if(currLevel == k) {
+        cout << root->data << " ";
+        return;
+    }
+    KthHelper(root->left, k, currLevel + 1);//left
+    KthHelper(root->right, k, currLevel + 1);//right
+}
+void KthLevel(Node* root, int k) {
+    KthHelper(root, k, 0);
+    cout << endl;
+}
+
+//lowest common ancestor
+int LCA(Node* root, int n1, int n2) {
+    vector<int> path1, path2;
+
+    rootToNodePath(root, n1, path1);
+    rootToNodePath(root, n2, path2);
+
+    int lca = -1;
+    for(int i=0, j=0; i<path1.size() && j<path2.size(); i++, j++) {
+        if(path1[i] != path2[j]) {
+            return lca;
+        }
+        lca = path1[i];
+    }
+}
 
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
@@ -171,7 +207,17 @@ int main() {
 
     // cout << "sum of nodes : " << sum(root) << endl;
 
-    cout << "diameter of tree : " << diam1(root) << endl;
+    // cout << "diameter of tree : " << diam1(root) << endl;
+
+
+    // Node* subRoot = new Node(2);
+    // subRoot->left = new Node(4);
+    // subRoot->right = new Node(5);
+
+    // cout << isSubtree(root, subRoot)<<endl;
+
+    // Kth level of the tree
+    KthLevel(root, 2);
 
     return 0;
 
