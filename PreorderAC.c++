@@ -171,7 +171,28 @@ void KthLevel(Node* root, int k) {
     cout << endl;
 }
 
-//lowest common ancestor
+//lowest common ancestor TC-O(n)
+bool rootToNodePath(Node* root, int n, vector<int> &path) {
+    if(root == NULL) {
+        return false;
+    }
+
+    path.push_back(root->data);
+    if(root->data == n) {
+        return true;
+    }
+
+    int isLeft = rootToNodePath(root->left, n, path);
+    int isRight = rootToNodePath(root->right, n, path);
+
+    if(isLeft || isRight) {
+        return true;
+    }
+
+    path.pop_back();
+    return false;
+}
+
 int LCA(Node* root, int n1, int n2) {
     vector<int> path1, path2;
 
@@ -186,6 +207,8 @@ int LCA(Node* root, int n1, int n2) {
         lca = path1[i];
     }
 }
+
+
 
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
@@ -217,7 +240,11 @@ int main() {
     // cout << isSubtree(root, subRoot)<<endl;
 
     // Kth level of the tree
-    KthLevel(root, 2);
+    // KthLevel(root, 2);
+
+    // lowest common ancestor
+    int n1 = 4, n2 = 5;
+    cout<< "LCA of " << n1 << " and " << n2 << " is: " << LCA(root, n1, n2) << endl;
 
     return 0;
 
