@@ -208,6 +208,25 @@ int LCA(Node* root, int n1, int n2) {
     }
 }
 
+//lca app2  O(n), O(1) space
+Node* LCA2(Node* root, int n1, int n2) {
+    if(root == NULL) {
+        return NULL;
+    }
+    if(root->data == n1 || root->data == n2) {
+        return root;
+    }
+
+    Node* leftLCA = LCA2(root->left, n1, n2);
+    Node* rightLCA = LCA2(root->right, n1, n2);
+
+    if(leftLCA != NULL && rightLCA != NULL) {
+        return root;
+    }
+    
+    return leftLCA == NULL ? rightLCA : leftLCA;
+}
+
 
 
 int main() {
@@ -243,8 +262,13 @@ int main() {
     // KthLevel(root, 2);
 
     // lowest common ancestor
+    //app1
+    // int n1 = 4, n2 = 5;
+    // cout<< "LCA of " << n1 << " and " << n2 << " is: " << LCA(root, n1, n2) << endl;
+
+    //app2
     int n1 = 4, n2 = 5;
-    cout<< "LCA of " << n1 << " and " << n2 << " is: " << LCA(root, n1, n2) << endl;
+    cout << "LCA of " << n1 << " and " << n2 << " is: " << LCA2(root, n1, n2)->data << endl;
 
     return 0;
 
