@@ -227,7 +227,78 @@ Node* LCA2(Node* root, int n1, int n2) {
     return leftLCA == NULL ? rightLCA : leftLCA;
 }
 
+// int dist(Node* root, int n) {
+//     if(root == NULL) {
+//         return -1;
+//     }
 
+//     if(root->data == n) {
+//         return 0;
+//     }
+
+//     int leftDist = dist(root->left, n);
+//     if(leftDist != -1) {
+//         return leftDist + 1;
+//     } 
+
+//     int rightDist = dist(root->right, n);
+//     if(rightDist != -1) {
+//         return rightDist + 1;
+//     }
+
+//     return -1;
+// }
+
+// int minDist(Node* root, int n1, int n2) {
+//     Node* lca = LCA(root, n1, n2);
+
+//     int dist1 = dist(lca, n1);
+//     int dist2 = dist(lca, n2);
+
+//     return dist1 + dist2;
+// }
+
+
+//kth ancestor of a node
+int KthAncestor(Node* root, int node, int K) {
+    if(root == NULL) {
+        return -1;
+    }
+
+    if(root->data == node) {
+        return 0;
+    }
+
+    int leftDist = KthAncestor(root->left, node, K);
+    int rightDist = KthAncestor(root->right, node, K);
+
+    if(leftDist == -1 && leftDist == -1) {
+        return -1;
+    }
+
+    int validVal = leftDist == -1 ? rightDist : leftDist;
+    if(validVal + 1 == K) {
+        cout << "Kth ancestor : " << root->data << endl;
+    }
+
+    return validVal + 1;
+}
+
+int transform(Node* root) {
+    if(root == NULL) {
+        return 0;
+    }
+
+    int leftOld = transform(root->left);
+    int rightOld = transform(root->right);
+    int currOld = root->data;
+
+    root->data = leftOld + rightOld;
+
+    if(root->left != NULL) {
+        root->left->data = 
+    }
+}
 
 int main() {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1};
@@ -267,8 +338,11 @@ int main() {
     // cout<< "LCA of " << n1 << " and " << n2 << " is: " << LCA(root, n1, n2) << endl;
 
     //app2
-    int n1 = 4, n2 = 5;
-    cout << "LCA of " << n1 << " and " << n2 << " is: " << LCA2(root, n1, n2)->data << endl;
+    // int n1 = 4, n2 = 5;
+    // cout << "LCA of " << n1 << " and " << n2 << " is: " << LCA2(root, n1, n2)->data << endl;
+
+    int node = 5, K = 2;
+    KthAncestor(root, node, K);
 
     return 0;
 
