@@ -99,6 +99,22 @@ Node* delNode(Node* root, int val) {
     }
 }
 
+void printInRange(Node* root, int start, int end) {
+    if(root == NULL) {
+        return;
+    }
+
+    if(start <= root->data && root->data <= end) {//case1
+        cout << root->data << " ";
+        printInRange(root->left, start, end);
+        printInRange(root->right, start, end);
+    } else if(root->data < start) { //case2
+        printInRange(root->right, start, end);
+    } else {//case3
+        printInRange(root->left, start, end);
+    }
+}
+
 
 int main() {
     // int arr[6] = {5,1,3,4,2,7};
@@ -114,12 +130,15 @@ int main() {
     // cout << search(root, 6) << endl;
 
     Node* root = buildBST(arr2, 9);
-    inorder(root);
-    cout << endl;
+    // inorder(root);
+    // cout << endl;
 
-    delNode(root, 4);
+    // delNode(root, 4);
 
-    inorder(root);
+    // inorder(root);
+    // cout << endl;
+
+    printInRange(root, 5, 12);
     cout << endl;
 
     return 0;
