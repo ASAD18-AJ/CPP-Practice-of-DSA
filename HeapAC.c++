@@ -26,23 +26,36 @@ public:
     }
 
     int top() {
+        return vec[0];
+    }
 
+    bool empty() {
+        return vec.size() == 0;
     }
 }
 
 int main() {
     priority_queue<int, vector<int>, greater<int>> pq;
+    //1st one
+    // pq.push(5);
+    // pq.push(10);
+    // pq.push(9);
+    // pq.push(7);
+    // pq.push(3);
 
-    pq.push(5);
-    pq.push(10);
-    pq.push(9);
-    pq.push(7);
-    pq.push(3);
+    // while(!pq.empty()) {
+    //     cout << "top : " << pq.top() << endl;
+    //     pq.pop();
+    // }
 
-    while(!pq.empty()) {
-        cout << "top : " << pq.top() << endl;
-        pq.pop();
-    }
+    //2nd code
+    Heap heap;
+    heap.push(5);
+    heap.push(10);
+    heap.push(100);
+
+
+    cout << "top : " << heap.top() << endl;
 
     return 0;
 }
