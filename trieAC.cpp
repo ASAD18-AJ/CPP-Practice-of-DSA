@@ -79,7 +79,9 @@ int main() {
         trie.insert(words[i]);
     }
 
-    cout << trie.search("the") << endl;
+    // cout << trie.search("the") << endl;
+    vector<string> dict = {"i", "like", "sam", "samsung", "mobile","ice"};
+    cout << wordBreak(dict, "ilikesamsung") << endl;
 
     return 0;
 }
