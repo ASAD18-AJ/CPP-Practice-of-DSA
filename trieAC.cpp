@@ -45,6 +45,23 @@ public:
         }
         return temp->endOfWord;
     }
+
+    void longestHelper(Node* root, string &ans, string temp) {
+        for(pair<char, Node*> child : root->children) {
+            temp += child.first;
+
+            if((temp.size() == ans.size() && temp<ans ) || (temp.size() > ans.size())) {
+                ans = temp;
+            }
+            longestHelper(child.second, ans, temp);
+            temp = temp.substr(0, temp.size()-1);
+        }
+    }
+    string longestStringWithEOW() {
+        string ans = "";
+        longestHelper(child.second, ans, '');
+        return ans;
+    }
 };
 
 bool helper(Trie &trie, string key){
@@ -61,6 +78,15 @@ bool helper(Trie &trie, string key){
         }
     }
     return false;
+}
+
+string longestString(vector<string> dict) {
+    Trie trie;
+
+    for(int i=0;i<dict.size();i++) {
+        trie.insert(dict[i]);
+    }
+    return trie.longestStringWithEOW();
 }
 
 bool wordBreak(vector<string> dict, string key) {
