@@ -70,6 +70,28 @@ public:
         dfsHelper(0, vis);
         cout << endl;
     }
+
+    bool pathHelper(int src, int dest, vector<bool> &vis) {
+        if(src == dest) {
+            return true;
+        }
+        vis[src] = true;
+        list<int> neighbours = l[src];
+
+        for(int v : neighbours) {
+            if(!vis[v]) {
+                if(pathHelper(v, dest, vis)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    bool hasPath(int src, int dest){
+        vector<bool> vis(7, false);
+        return pathHelper(src, dest, vis);
+    }
 };
 
 int main() {
@@ -82,7 +104,8 @@ int main() {
     graph.addEdge(2,4);
 
     // graph.bfs();
-    graph.dfs();
+    // graph.dfs();
+    cout<< graph.hasPath(0, 4);
 
     return 0;
 }
